@@ -1,22 +1,841 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <title>Angela's Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Islam Mosaad Elsayed - Professional Profile</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --linkedin-blue: #0a66c2;
+            --linkedin-light-blue: #378fe9;
+            --linkedin-dark-blue: #004182;
+            --gray-100: #f3f2ef;
+            --gray-200: #e9e5df;
+            --gray-300: #ccc9c3;
+            --gray-600: #666666;
+            --gray-700: #434649;
+            --gray-900: #1d1d1f;
+            --white: #ffffff;
+            --success: #057642;
+            --warning: #e7b441;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+            background-color: var(--gray-100);
+            color: var(--gray-900);
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1128px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        /* Header/Profile Card */
+        .profile-card {
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.15), 0 2px 3px rgba(0,0,0,0.2);
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        .profile-banner {
+            height: 200px;
+            background: linear-gradient(135deg, var(--linkedin-blue), var(--linkedin-light-blue));
+            position: relative;
+        }
+
+        .profile-info {
+            padding: 24px;
+            position: relative;
+        }
+
+        .profile-photo {
+            width: 152px;
+            height: 152px;
+            border-radius: 50%;
+            border: 4px solid var(--white);
+            background: var(--white);
+            position: absolute;
+            top: -76px;
+            left: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: var(--linkedin-blue);
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
+        }
+
+        .profile-content {
+            margin-left: 176px;
+            padding-top: 16px;
+        }
+
+        .profile-name {
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 4px;
+        }
+
+        .profile-headline {
+            font-size: 20px;
+            color: var(--gray-700);
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+
+        .profile-location {
+            color: var(--gray-600);
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .profile-stats {
+            display: flex;
+            gap: 16px;
+            margin: 16px 0;
+        }
+
+        .stat-item {
+            color: var(--linkedin-blue);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .stat-item:hover {
+            text-decoration: underline;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gray-700);
+            font-size: 14px;
+        }
+
+        .contact-item i {
+            color: var(--gray-600);
+            width: 16px;
+        }
+
+        .contact-item a {
+            color: var(--linkedin-blue);
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Section Cards */
+        .section-card {
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.15), 0 2px 3px rgba(0,0,0,0.2);
+            margin-bottom: 16px;
+            padding: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--gray-900);
+        }
+
+        .section-header i {
+            color: var(--linkedin-blue);
+            font-size: 24px;
+        }
+
+        /* About Section */
+        .about-text {
+            color: var(--gray-700);
+            font-size: 14px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        /* Experience Section */
+        .experience-item {
+            display: flex;
+            gap: 12px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .experience-item:first-child {
+            padding-top: 0;
+        }
+
+        .company-logo {
+            width: 48px;
+            height: 48px;
+            background: var(--gray-200);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .company-logo i {
+            color: var(--gray-600);
+            font-size: 20px;
+        }
+
+        .experience-content {
+            flex: 1;
+        }
+
+        .job-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 2px;
+        }
+
+        .company-name {
+            font-size: 14px;
+            color: var(--gray-600);
+            margin-bottom: 4px;
+        }
+
+        .job-duration {
+            font-size: 12px;
+            color: var(--gray-600);
+            margin-bottom: 8px;
+        }
+
+        .job-location {
+            font-size: 12px;
+            color: var(--gray-600);
+            margin-bottom: 12px;
+        }
+
+        .job-description {
+            color: var(--gray-700);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .job-description ul {
+            margin: 8px 0;
+            padding-left: 16px;
+        }
+
+        .job-description li {
+            margin: 4px 0;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .skill-category {
+            border-left: 3px solid var(--linkedin-blue);
+            padding-left: 16px;
+        }
+
+        .skill-category-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-item {
+            background: var(--gray-100);
+            border: 1px solid var(--gray-300);
+            border-radius: 16px;
+            padding: 6px 12px;
+            font-size: 12px;
+            color: var(--gray-700);
+            transition: all 0.2s ease;
+        }
+
+        .skill-item:hover {
+            background: var(--linkedin-blue);
+            color: var(--white);
+            border-color: var(--linkedin-blue);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+        }
+
+        .project-card {
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            padding: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--linkedin-blue);
+            box-shadow: 0 2px 8px rgba(10, 102, 194, 0.15);
+        }
+
+        .project-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .project-title i {
+            color: var(--linkedin-blue);
+        }
+
+        .project-description {
+            color: var(--gray-700);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Education Section */
+        .education-item {
+            display: flex;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .education-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .education-item:first-child {
+            padding-top: 0;
+        }
+
+        .education-logo {
+            width: 40px;
+            height: 40px;
+            background: var(--gray-200);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .education-logo i {
+            color: var(--linkedin-blue);
+            font-size: 16px;
+        }
+
+        .education-content {
+            flex: 1;
+        }
+
+        .degree-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 2px;
+        }
+
+        .institution-name {
+            font-size: 14px;
+            color: var(--gray-600);
+            margin-bottom: 4px;
+        }
+
+        .education-year {
+            font-size: 12px;
+            color: var(--gray-600);
+        }
+
+        /* Languages Section */
+        .languages-list {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .language-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            border: 1px solid var(--gray-300);
+            border-radius: 8px;
+            min-width: 140px;
+        }
+
+        .language-flag {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .language-details {
+            flex: 1;
+        }
+
+        .language-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gray-900);
+        }
+
+        .language-level {
+            font-size: 12px;
+            color: var(--gray-600);
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-primary {
+            background: var(--linkedin-blue);
+            color: var(--white);
+            border: 1px solid var(--linkedin-blue);
+        }
+
+        .btn-primary:hover {
+            background: var(--linkedin-dark-blue);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--linkedin-blue);
+            border: 1px solid var(--linkedin-blue);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(112, 181, 249, 0.15);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 12px;
+            }
+
+            .profile-content {
+                margin-left: 0;
+                padding-top: 80px;
+                text-align: center;
+            }
+
+            .profile-photo {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .profile-name {
+                font-size: 24px;
+            }
+
+            .profile-headline {
+                font-size: 16px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .languages-list {
+                flex-direction: column;
+            }
+
+            .contact-info {
+                justify-content: center;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .section-card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <h1>Angela Yu's Portfolio</h1>
-  <h2>I'm a Web Developer</h2>
-  <hr />
-  <h3><a href="./public/movie-ranking.html">Movie Ranking Project</a></h3>
-  <img src="./assets/images/movie-ranking.png" height="200" alt="movie ranking project preview"/>
-  <h3><a href="./public/birthday-invite.html">Birthday Invite Project</a></h3>
-  <img src="./assets/images/birthday-invite.png" height="200" alt="birthday invite project preview"/>
-  <hr />
-  <a href="./public/about.html">About Me</a>
-  <a href="./public/contact.html">Contact Me</a>
-</body>
+    <div class="container">
+        <!-- Profile Card -->
+        <div class="profile-card">
+            <div class="profile-banner"></div>
+            <div class="profile-info">
+                <div class="profile-photo">
+    <img src="1.jpg" alt="Profile Photo" style="width: 90%; height: 90%; border-radius: 50%; object-fit: cover;">
+</div>
+                <div class="profile-content">
+                    <h1 class="profile-name">Islam Mosaad Elsayed</h1>
+                    <p class="profile-headline">Financial Manager & Data Analyst</p>
+                    <p class="profile-location">
+                        <i class="fas fa-map-marker-alt"></i> Cairo, Egypt
+                    </p>
+                    
+                    <div class="profile-stats">
+                        <span class="stat-item">20+ Years Experience</span>
+                        <span class="stat-item">500+ Connections</span>
+                        <span class="stat-item">Available for Opportunities</span>
+                    </div>
 
+                    <div class="action-buttons">
+                        <a href="mailto:Acc.islamsamy@live.com" class="btn btn-primary">
+                            <i class="fas fa-envelope"></i> Contact Info
+                        </a>
+                        <a href="https://www.linkedin.com/in/islamsamy/" target="_blank" class="btn btn-secondary">
+                            <i class="fab fa-linkedin"></i> Connect
+                        </a>
+                    </div>
+
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:Acc.islamsamy@live.com">Acc.islamsamy@live.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+2 01208757573</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-linkedin"></i>
+                            <a href="https://www.linkedin.com/in/islamsamy/" target="_blank">LinkedIn Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <div class="section-card">
+            <div class="section-header">
+                <i class="fas fa-user-circle"></i>
+                About
+            </div>
+            <div class="about-text">
+                Financial Manager with 20+ years of experience in financial accounting, IFRS compliance, budgeting, and digital transformation across petroleum, publishing, and technology sectors. Expert in financial reporting, cost control, feasibility studies, and ERP systems (SAP, Oracle, Odoo). Skilled in data analysis using Python, Power BI, SQL, and advanced Excel to drive strategic decision-making and operational efficiency.
+            </div>
+        </div>
+
+        <!-- Experience Section -->
+        <div class="section-card">
+            <div class="section-header">
+                <i class="fas fa-briefcase"></i>
+                Experience
+            </div>
+            
+            <div class="experience-item">
+                <div class="company-logo">
+                    <i class="fas fa-industry"></i>
+                </div>
+                <div class="experience-content">
+                    <div class="job-title">Senior Supervisor – Data & Financial Analyst</div>
+                    <div class="company-name">Modern Drilling Company (formerly Sinotharwa)</div>
+                    <div class="job-duration">Jul 2024 - Present · 2 mos</div>
+                    <div class="job-location">Egypt · Full-time</div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Conduct comprehensive financial analysis and prepare monthly/quarterly financial reports, including variance analysis and trend forecasting.</li>
+                            <li>Lead the budgeting and financial forecasting processes, aligning financial plans with company objectives.</li>
+                            <li>Deliver data-driven financial insights and KPIs using Power BI and Excel.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="company-logo">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <div class="experience-content">
+                    <div class="job-title">Freelance Financial Consultant</div>
+                    <div class="company-name">Self-employed</div>
+                    <div class="job-duration">May 2012 - Present · 12 yrs 5 mos</div>
+                    <div class="job-location">Egypt & Saudi Arabia · Part-time</div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Prepared feasibility studies, business plans, and credit assessment reports for startups and SMEs.</li>
+                            <li>Advised clients on financial structuring, tax compliance, and ERP system setup.</li>
+                            <li>Built custom financial dashboards and accounting systems using Excel, Power BI, and Python.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="company-logo">
+                    <i class="fas fa-oil-well"></i>
+                </div>
+                <div class="experience-content">
+                    <div class="job-title">Head of General Accounting</div>
+                    <div class="company-name">Egyptian Petroleum Holding Company (EPHH)</div>
+                    <div class="job-duration">May 2014 - Jun 2024 · 10 yrs 2 mos</div>
+                    <div class="job-location">Egypt · Full-time</div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Managed the full accounting cycle and prepared IFRS-compliant financial statements.</li>
+                            <li>Led the SAP ERP implementation as project manager, driving digital transformation.</li>
+                            <li>Conducted cost control and variance analysis, coordinated with regulatory bodies for compliance.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="company-logo">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div class="experience-content">
+                    <div class="job-title">Chief Accountant</div>
+                    <div class="company-name">Dar El-Maarefa El-Gameaa</div>
+                    <div class="job-duration">Mar 2010 - Apr 2014 · 4 yrs 2 mos</div>
+                    <div class="job-location">Egypt · Full-time</div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Developed and maintained a custom in-house accounting system.</li>
+                            <li>Ensured full regulatory compliance through coordination with external auditors.</li>
+                            <li>Streamlined financial processes and improved internal controls.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Section -->
+        <div class="section-card">
+            <div class="section-header">
+                <i class="fas fa-project-diagram"></i>
+                Data Analysis Projects
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-title">
+                        <i class="fas fa-hospital"></i>
+                        Cancer Hospital Resource Analysis
+                    </div>
+                    <div class="project-description">
+                        Analyzed patient flow, treatment costs, and bed occupancy using Python & Excel. Developed interactive dashboards to support resource allocation and capacity planning decisions.
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">
+                        <i class="fab fa-bitcoin"></i>
+                        Bitcoin Price Trend Analysis
+                    </div>
+                    <div class="project-description">
+                        Collected historical Bitcoin data via web scraping & APIs. Applied time series analysis using Python to identify trends, volatility, and predictive patterns.
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">
+                        <i class="fab fa-amazon"></i>
+                        Amazon Sales Performance Dashboard
+                    </div>
+                    <div class="project-description">
+                        Analyzed simulated sales data to evaluate revenue, returns, and top-performing products. Built interactive dashboards in Power BI & Excel PivotTables.
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">
+                        <i class="fas fa-users"></i>
+                        Customer Segmentation using Clustering
+                    </div>
+                    <div class="project-description">
+                        Applied K-Means & Hierarchical Clustering on customer data to identify market segments. Enabled targeted marketing strategies based on behavioral profiles.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="section-card">
+            <div class="section-header">
+                <i class="fas fa-cogs"></i>
+                Skills
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="skill-category-title">Financial & Accounting</div>
+                    <div class="skill-list">
+                        <span class="skill-item">IFRS & GAAP</span>
+                        <span class="skill-item">Financial Reporting</span>
+                        <span class="skill-item">Budgeting & Forecasting</span>
+                        <span class="skill-item">Cost Control</span>
+                        <span class="skill-item">Cash Flow Management</span>
+                        <span class="skill-item">Tax Compliance</span>
+                        <span class="skill-item">Credit Assessment</span>
+                        <span class="skill-item">Risk Evaluation</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-category-title">Data Analysis & Technology</div>
+                    <div class="skill-list">
+                        <span class="skill-item">Python</span>
+                        <span class="skill-item">SQL</span>
+                        <span class="skill-item">Power BI</span>
+                        <span class="skill-item">Advanced Excel</span>
+                        <span class="skill-item">Tableau</span>
+                        <span class="skill-item">Data Visualization</span>
+                        <span class="skill-item">Statistical Analysis</span>
+                        <span class="skill-item">Machine Learning</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-category-title">ERP & Systems</div>
+                    <div class="skill-list">
+                        <span class="skill-item">SAP Business One</span>
+                        <span class="skill-item">Oracle E-Business</span>
+                        <span class="skill-item">Odoo</span>
+                        <span class="skill-item">QuickBooks</span>
+                        <span class="skill-item">ERP Implementation</span>
+                        <span class="skill-item">System Configuration</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-category-title">Leadership & Management</div>
+                    <div class="skill-list">
+                        <span class="skill-item">Team Leadership</span>
+                        <span class="skill-item">Strategic Planning</span>
+                        <span class="skill-item">Project Management</span>
+                        <span class="skill-item">Training & Development</span>
+                        <span class="skill-item">Public Speaking</span>
+                        <span class="skill-item">Problem Solving</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Education Section -->
+        <div class="section-card">
+            <div class="section-header">
+                <i class="fas fa-graduation-cap"></i>
+                Education
+            </div>
+            
+            <div class="education-item">
+                <div class="education-logo">
+                    <i class="fas fa-university"></i>
+                </div>
+                <div class="education-content">
+                    <div class="degree-title">Graduate Diploma in Financial Accounting and Auditing</div>
+                    <div class="institution-name">Faculty of Commerce – Alexandria University</div>
+                    <div class="education-year">2013 · Grade: Very Good</div>
+                </div>
+            </div>
+
+            <div class="education-item">
+                <div class="education-logo">
+                    <i class="fas fa-university"></i>
+                </div>
+                <div class="education-content">
+                    <div class="degree-title">Bachelor of Accounting and Auditing</div>
+                    <div class="institution-name">Faculty of Commerce – Alexandria University</div>
+                    <div class="education-year">2011</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Languages Section -->
+        <div class="section-card">
+            <div class="section-header">
+                <i class="fas fa-globe"></i>
+                Languages
+            </div>
+            <div class="languages-list">
+                <div class="language-item">
+                    <div class="language-flag">🇪🇬</div>
+                    <div class="language-details">
+                        <div class="language-name">Arabic</div>
+                        <div class="language-level">Native proficiency</div>
+                    </div>
+                </div>
+                <div class="language-item">
+                    <div class="language-flag">🇺🇸</div>
+                    <div class="language-details">
+                        <div class="language-name">English</div>
+                        <div class="language-level">Professional working proficiency</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
 </html>
